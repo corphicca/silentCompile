@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Entry</title>
+</head>
+<body>
+    <h1>Create a New Entry</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'entry_list' %}">← Back to entries</a>
+</body>
+</html>
