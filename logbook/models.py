@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
 class Tag(models.Model):
@@ -16,13 +17,10 @@ class Milestone(models.Model):
         return self.name 
 
 class Programmer(models.Model):
-    userName = models.CharField(max_length=30, unique=True)
-    email = models.CharField(max_length=30, unique=True) 
-    password = models.CharField(max_length=30)
-    dateJoined = models.DateField(auto_now_add=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.userName
+        return self.user.username 
 
 class Entry(models.Model):
     programmerID = models.ForeignKey("Programmer", on_delete=models.CASCADE, related_name="entries") #Foreign Key 
