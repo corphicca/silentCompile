@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>SilentCompile - Entries</title>
-</head>
-<body>
+{% extends "logbook/base.html" %}
 
-    <h1>All Entries</h1>
+{% block content %}
+<h1>All Entries</h1>
 
-     <a href="{% url 'create_entry' %}">➕ Create New Entry</a>
-    {% for entry in entries %}
-        <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-            <h2>{{ entry.title }}</h2>
-            <p><strong>By:</strong> {{ entry.programmerID.userName }}</p>
-            <p><strong>Date:</strong> {{ entry.createdAt }}</p>
-            <p><strong>Rating:</strong> {{ entry.rating }}/5</p>
-            <p>{{ entry.reflection|linebreaks }}</p>
-        </div>
-    {% empty %}
-        <p>No entries yet.</p>
-    {% endfor %}
-</body>
-</html>
+<ul>
+  {% for entry in entries %}
+    <li>{{ entry.title }} - {{ entry.createdAt }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'create_entry' %}">+ Create a New Entry</a>
+{% endblock %}

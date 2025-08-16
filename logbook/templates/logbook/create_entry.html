@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Entry</title>
-</head>
-<body>
-    <h1>Create a New Entry</h1>
+{% extends "logbook/base.html" %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+{% block content %}
+<h1>Create a New Entry</h1>
 
-        <button type="submit">Submit</button>
-    </form>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
 
-    <a href="{% url 'entry_list' %}">← Back to entries</a>
-</body>
-</html>
+    <button type="submit">Submit</button>
+</form>
+
+<a href="{% url 'entry_list' %}">← Back to entries</a>
+{% endblock %}
